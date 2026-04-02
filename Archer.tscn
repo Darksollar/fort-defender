@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://booupkocg6n7r"]
+
+[ext_resource type="Script" uid="uid://dnosbmtug1dok" path="res://archer.gd" id="1_hgo2b"]
+
+[node name="Archer" type="Node2D" unique_id=1790045097]
+script = ExtResource("1_hgo2b")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=874249222]
+color = Color(0.9254902, 0.14901961, 0.8745098, 1)
+polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+
+[node name="FireTimer" type="Timer" parent="." unique_id=1850307452]
+wait_time = 0.75
+autostart = true

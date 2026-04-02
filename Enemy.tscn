@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://bedya5m1x2cax"]
+
+[ext_resource type="Script" uid="uid://cgtg3wfexpakq" path="res://enemy.gd" id="1_tt7e2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gqquq"]
+size = Vector2(28, 28)
+
+[node name="Enemy" type="Area2D" unique_id=1398389073]
+script = ExtResource("1_tt7e2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=198785494]
+shape = SubResource("RectangleShape2D_gqquq")
+
+[node name="Polygon2D" type="Polygon2D" parent="." unique_id=1533624768]
+color = Color(0.9084309, 0.35636985, 0.28955907, 1)
+polygon = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)
+uv = PackedVector2Array(-14, -14, 14, -14, 14, 14, -14, 14)

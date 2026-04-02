@@ -1,0 +1,78 @@
+[gd_scene format=3 uid="uid://cq3kl3sf1wq7w"]
+
+[ext_resource type="Script" uid="uid://gjdo631p80eo" path="res://enemy_spawner.gd" id="1_glv2v"]
+[ext_resource type="PackedScene" uid="uid://bedya5m1x2cax" path="res://Enemy.tscn" id="2_uu6xs"]
+[ext_resource type="PackedScene" uid="uid://booupkocg6n7r" path="res://Archer.tscn" id="3_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://dwfr8d2vxxvpk" path="res://Arrow.tscn" id="4_fos0i"]
+
+[node name="MainNode2D" type="Node2D" unique_id=197141693]
+
+[node name="BackgroundControl" type="Control" parent="." unique_id=1242007055]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="BattlefieldRect" type="ColorRect" parent="BackgroundControl" unique_id=727809356]
+layout_mode = 0
+offset_right = 1280.0
+offset_bottom = 580.0
+
+[node name="FortRect" type="ColorRect" parent="BackgroundControl" unique_id=1272983699]
+layout_mode = 0
+offset_top = 580.0
+offset_right = 1280.0
+offset_bottom = 720.0
+color = Color(0.13725491, 1, 1, 1)
+
+[node name="WorldNode2D" type="Node2D" parent="." unique_id=1037817532]
+
+[node name="Enemies" type="Node2D" parent="WorldNode2D" unique_id=426086987]
+
+[node name="Projectiles" type="Node2D" parent="WorldNode2D" unique_id=412286929]
+
+[node name="Pickups" type="Node2D" parent="WorldNode2D" unique_id=1798687011]
+
+[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container")]
+script = ExtResource("1_glv2v")
+enemy_scene = ExtResource("2_uu6xs")
+enemies_container = NodePath("..")
+
+[node name="Timer" type="Timer" parent="WorldNode2D/EnemySpawner" unique_id=522698906]
+autostart = true
+
+[node name="CursorAttack" type="Node" parent="WorldNode2D" unique_id=415126261]
+
+[node name="FortUnits" type="Node2D" parent="WorldNode2D" unique_id=2089381786]
+
+[node name="Archer" parent="WorldNode2D/FortUnits" unique_id=1790045097 instance=ExtResource("3_cm0pq")]
+position = Vector2(320, 650)
+projectile_scene = ExtResource("4_fos0i")
+projectile_container_path = NodePath("../../Projectiles")
+
+[node name="Archer2" parent="WorldNode2D/FortUnits" unique_id=1321105633 instance=ExtResource("3_cm0pq")]
+position = Vector2(640, 650)
+projectile_scene = ExtResource("4_fos0i")
+projectile_container_path = NodePath("../../Projectiles")
+
+[node name="Archer3" parent="WorldNode2D/FortUnits" unique_id=1368424740 instance=ExtResource("3_cm0pq")]
+position = Vector2(960, 650)
+projectile_scene = ExtResource("4_fos0i")
+projectile_container_path = NodePath("../../Projectiles")
+
+[node name="MarkersNode2D" type="Node2D" parent="." unique_id=1857782902]
+
+[node name="ArcherPos1" type="Marker2D" parent="MarkersNode2D" unique_id=954737753]
+position = Vector2(320, 650)
+
+[node name="ArcherPos2" type="Marker2D" parent="MarkersNode2D" unique_id=434358693]
+position = Vector2(640, 650)
+
+[node name="ArcherPos3" type="Marker2D" parent="MarkersNode2D" unique_id=1751676055]
+position = Vector2(960, 650)
+
+[node name="HUD" type="CanvasLayer" parent="." unique_id=1295286073]
+
+[node name="Label" type="Label" parent="HUD" unique_id=59594700]
+offset_right = 40.0
+offset_bottom = 23.0
