@@ -1,5 +1,7 @@
 extends Node2D
 
+signal collected(pickup_type: String, value: int)
+
 @export var pickup_type: String = "coin"
 @export var value: int = 1
 @export var target_position: Vector2 = Vector2(640, 650)
@@ -19,6 +21,7 @@ func _process(delta: float) -> void:
 	var to_target = target_position - global_position
 
 	if to_target.length() <= 10.0:
+		collected.emit(pickup_type, value)
 		queue_free()
 		return
 

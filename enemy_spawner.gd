@@ -1,5 +1,7 @@
 extends Node
 
+signal pickup_collected(pickup_type: String, value: int)
+
 @export var enemy_scene: PackedScene
 @export var coin_scene: PackedScene
 @export var crystal_scene: PackedScene
@@ -29,10 +31,20 @@ func _on_enemy_died(drop_position: Vector2) -> void:
 		var coin = coin_scene.instantiate()
 		coin.global_position = drop_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
 		coin.target_position = pickup_target_position
+		coin.value = 1
+		coin.pickup_type = "coin"
+		coin.collected.connect(_on_pickup_collected)
 		pickups_container.add_child(coin)
 
 	if crystal_scene != null:
 		var crystal = crystal_scene.instantiate()
 		crystal.global_position = drop_position + Vector2(randf_range(-8, 8), randf_range(-8, 8))
 		crystal.target_position = pickup_target_position
+		crystal.value = 2
+		crystal.pickup_type = "crystal"
+		crystal.collected.connect(_on_pickup_collected)
 		pickups_container.add_child(crystal)
+
+func _on_pickup_collected(_pickup_type: String, value: int) -> void:
+	print("ENEMY_SPAWNER: Forwarding pickup_collected type=", _pickup_type, ", value=", value)
+	pickup_collected.emit(_pickup_type, value)

@@ -39,7 +39,7 @@ color = Color(0.13725491, 1, 1, 1)
 
 [node name="Pickups" type="Node2D" parent="WorldNode2D" unique_id=1798687011]
 
-[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container", "pickups_container", "fort_zone")]
+[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container", "pickups_container", "fort_zone", "main_node")]
 script = ExtResource("1_glv2v")
 enemy_scene = ExtResource("2_uu6xs")
 coin_scene = ExtResource("4_03owx")
@@ -47,6 +47,7 @@ crystal_scene = ExtResource("5_wkp8b")
 enemies_container = NodePath("../Enemies")
 pickups_container = NodePath("../Pickups")
 fort_zone = NodePath("../FortZone")
+main_node = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="WorldNode2D/EnemySpawner" unique_id=522698906]
 autostart = true
@@ -92,8 +93,33 @@ offset_right = 40.0
 offset_bottom = 23.0
 
 [node name="FortHealthLabel" type="Label" parent="HUD" unique_id=1167991672]
-offset_left = 1134.0
+offset_left = 1080.0
+offset_top = 8.0
 offset_right = 1270.0
-offset_bottom = 32.0
+offset_bottom = 30.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "HEALTH"
+text = "Fort HP: 100 / 100"
+
+[node name="PlayerLevelLabel" type="Label" parent="HUD" unique_id=1167991674]
+offset_left = 1080.0
+offset_top = 40.0
+offset_right = 1270.0
+offset_bottom = 62.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Lv.1"
+
+[node name="PlayerXPLabel" type="Label" parent="HUD" unique_id=1167991675]
+offset_left = 1080.0
+offset_top = 62.0
+offset_right = 1270.0
+offset_bottom = 84.0
+theme_override_colors/font_color = Color(0.2, 0.2, 1, 1)
+text = "0 / 300"
+
+[node name="MoneyLabel" type="Label" parent="HUD" unique_id=1167991673]
+offset_left = 1080.0
+offset_top = 96.0
+offset_right = 1270.0
+offset_bottom = 118.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "$0"
