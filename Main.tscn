@@ -4,9 +4,11 @@
 [ext_resource type="Script" uid="uid://gjdo631p80eo" path="res://enemy_spawner.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bedya5m1x2cax" path="res://Enemy.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://booupkocg6n7r" path="res://Archer.tscn" id="3_cm0pq"]
+[ext_resource type="PackedScene" uid="uid://7lfkcky41cnk" path="res://CoinPickup.tscn" id="4_03owx"]
 [ext_resource type="PackedScene" uid="uid://dwfr8d2vxxvpk" path="res://Arrow.tscn" id="4_fos0i"]
 [ext_resource type="Script" uid="uid://geeqneh82lo7" path="res://cursor_attack.gd" id="4_lgr22"]
 [ext_resource type="Script" uid="uid://s0fy8pp6hje5" path="res://fort_zone.gd" id="5_fos0i"]
+[ext_resource type="PackedScene" uid="uid://dy1hfv5kmpbu" path="res://Crystal_Pickup.tscn" id="5_wkp8b"]
 
 [node name="MainNode2D" type="Node2D" unique_id=197141693]
 script = ExtResource("1_3dxm6")
@@ -37,10 +39,13 @@ color = Color(0.13725491, 1, 1, 1)
 
 [node name="Pickups" type="Node2D" parent="WorldNode2D" unique_id=1798687011]
 
-[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container", "fort_zone")]
+[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container", "pickups_container", "fort_zone")]
 script = ExtResource("1_glv2v")
 enemy_scene = ExtResource("2_uu6xs")
-enemies_container = NodePath("..")
+coin_scene = ExtResource("4_03owx")
+crystal_scene = ExtResource("5_wkp8b")
+enemies_container = NodePath("../Enemies")
+pickups_container = NodePath("../Pickups")
 fort_zone = NodePath("../FortZone")
 
 [node name="Timer" type="Timer" parent="WorldNode2D/EnemySpawner" unique_id=522698906]
