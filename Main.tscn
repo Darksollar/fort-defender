@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://cq3kl3sf1wq7w"]
 
+[ext_resource type="Script" uid="uid://bsnxtomtd46y1" path="res://main.gd" id="1_3dxm6"]
 [ext_resource type="Script" uid="uid://gjdo631p80eo" path="res://enemy_spawner.gd" id="1_glv2v"]
 [ext_resource type="PackedScene" uid="uid://bedya5m1x2cax" path="res://Enemy.tscn" id="2_uu6xs"]
 [ext_resource type="PackedScene" uid="uid://booupkocg6n7r" path="res://Archer.tscn" id="3_cm0pq"]
 [ext_resource type="PackedScene" uid="uid://dwfr8d2vxxvpk" path="res://Arrow.tscn" id="4_fos0i"]
+[ext_resource type="Script" uid="uid://geeqneh82lo7" path="res://cursor_attack.gd" id="4_lgr22"]
+[ext_resource type="Script" uid="uid://s0fy8pp6hje5" path="res://fort_zone.gd" id="5_fos0i"]
 
 [node name="MainNode2D" type="Node2D" unique_id=197141693]
+script = ExtResource("1_3dxm6")
 
 [node name="BackgroundControl" type="Control" parent="." unique_id=1242007055]
 layout_mode = 3
@@ -33,15 +37,17 @@ color = Color(0.13725491, 1, 1, 1)
 
 [node name="Pickups" type="Node2D" parent="WorldNode2D" unique_id=1798687011]
 
-[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container")]
+[node name="EnemySpawner" type="Node" parent="WorldNode2D" unique_id=649830398 node_paths=PackedStringArray("enemies_container", "fort_zone")]
 script = ExtResource("1_glv2v")
 enemy_scene = ExtResource("2_uu6xs")
 enemies_container = NodePath("..")
+fort_zone = NodePath("../FortZone")
 
 [node name="Timer" type="Timer" parent="WorldNode2D/EnemySpawner" unique_id=522698906]
 autostart = true
 
 [node name="CursorAttack" type="Node" parent="WorldNode2D" unique_id=415126261]
+script = ExtResource("4_lgr22")
 
 [node name="FortUnits" type="Node2D" parent="WorldNode2D" unique_id=2089381786]
 
@@ -60,6 +66,9 @@ position = Vector2(960, 650)
 projectile_scene = ExtResource("4_fos0i")
 projectile_container_path = NodePath("../../Projectiles")
 
+[node name="FortZone" type="Node" parent="WorldNode2D" unique_id=1713958473]
+script = ExtResource("5_fos0i")
+
 [node name="MarkersNode2D" type="Node2D" parent="." unique_id=1857782902]
 
 [node name="ArcherPos1" type="Marker2D" parent="MarkersNode2D" unique_id=954737753]
@@ -76,3 +85,10 @@ position = Vector2(960, 650)
 [node name="Label" type="Label" parent="HUD" unique_id=59594700]
 offset_right = 40.0
 offset_bottom = 23.0
+
+[node name="FortHealthLabel" type="Label" parent="HUD" unique_id=1167991672]
+offset_left = 1134.0
+offset_right = 1270.0
+offset_bottom = 32.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "HEALTH"
