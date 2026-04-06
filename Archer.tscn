@@ -1,13 +1,133 @@
 [gd_scene format=3 uid="uid://booupkocg6n7r"]
 
 [ext_resource type="Script" uid="uid://dnosbmtug1dok" path="res://archer.gd" id="1_hgo2b"]
+[ext_resource type="PackedScene" uid="uid://dwfr8d2vxxvpk" path="res://Arrow.tscn" id="2_3lvsr"]
+[ext_resource type="Texture2D" uid="uid://bqsbqxeu4q0rk" path="res://art/Archer/Archer_Shoot.png" id="3_tgbv5"]
+[ext_resource type="Texture2D" uid="uid://cahbpuxruk6r7" path="res://art/Archer/Archer_Idle.png" id="4_qnjvk"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ellj1"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rxav8"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ldxec"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pl7j3"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_adpc4"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fe5d0"]
+atlas = ExtResource("4_qnjvk")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ll7ho"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(0, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahv46"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(192, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4j2j8"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(384, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d4ifr"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(576, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mels2"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(768, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c0pvk"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(960, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kw1d3"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(1152, 0, 192, 192)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_koo50"]
+atlas = ExtResource("3_tgbv5")
+region = Rect2(1344, 0, 192, 192)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_t1gk3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ellj1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rxav8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ldxec")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pl7j3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_adpc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fe5d0")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ll7ho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahv46")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4j2j8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d4ifr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mels2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c0pvk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kw1d3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_koo50")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 10.0
+}]
 
 [node name="Archer" type="Node2D" unique_id=1790045097]
 script = ExtResource("1_hgo2b")
+projectile_scene = ExtResource("2_3lvsr")
 
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=874249222]
+visible = false
 color = Color(0.9254902, 0.14901961, 0.8745098, 1)
 polygon = PackedVector2Array(-12, -12, 12, -12, 12, 12, -12, 12)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=36437901]
+sprite_frames = SubResource("SpriteFrames_t1gk3")
+animation = &"Shoot"
 
 [node name="FireTimer" type="Timer" parent="." unique_id=1850307452]
 wait_time = 0.75

@@ -3,15 +3,18 @@ extends Node
 signal pickup_collected(pickup_type: String, value: int)
 
 @export var enemy_scene: PackedScene
+@export var enemy_slow_scene: PackedScene
+@export var slow_spawn_chance: float = 0.25
+
 @export var coin_scene: PackedScene
 @export var crystal_scene: PackedScene
 @export var enemies_container: Node2D
 @export var pickups_container: Node2D
 @export var fort_zone: Node
 @export var spawn_y: float = -40.0
-@export var min_x: float = 60.0
-@export var max_x: float = 1220.0
-@export var pickup_target_position: Vector2 = Vector2(640, 650)
+@export var min_x: float = 40.0
+@export var max_x: float = 1520.0
+@export var pickup_target_position: Vector2 = Vector2(780, 990)
 
 @onready var timer: Timer = $Timer
 
@@ -20,7 +23,12 @@ func _ready() -> void:
 	timer.timeout.connect(_spawn_enemy)
 
 func _spawn_enemy() -> void:
-	var enemy = enemy_scene.instantiate()
+	var scene_to_spawn: PackedScene = enemy_scene
+
+	if enemy_slow_scene != null and randf() < slow_spawn_chance:
+		scene_to_spawn = enemy_slow_scene
+
+	var enemy = scene_to_spawn.instantiate()
 	enemy.position = Vector2(randf_range(min_x, max_x), spawn_y)
 	enemy.fort_zone = fort_zone
 	enemy.died.connect(_on_enemy_died)

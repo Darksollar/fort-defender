@@ -11,7 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	position += direction * speed * delta
 
-	if position.x < -100 or position.x > 1380 or position.y < -100 or position.y > 820:
+	if position.x < -100 or position.x > 2020 or position.y < -100 or position.y > 1180:
 		queue_free()
 
 func _on_area_entered(area: Area2D) -> void:

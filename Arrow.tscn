@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwfr8d2vxxvpk"]
 
 [ext_resource type="Script" uid="uid://cn80b6ddfjjis" path="res://arrow.gd" id="1_265pn"]
+[ext_resource type="Texture2D" uid="uid://irw1vro3wg6m" path="res://art/Archer/Arrow.png" id="2_a8t2u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x7iiy"]
 size = Vector2(10, 6)
@@ -14,3 +15,6 @@ shape = SubResource("RectangleShape2D_x7iiy")
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=205517151]
 color = Color(0.12156863, 1, 1, 1)
 polygon = PackedVector2Array(-5, -3, 5, -3, 5, 3, -5, 3)
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=863175839]
+texture = ExtResource("2_a8t2u")

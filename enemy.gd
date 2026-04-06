@@ -4,7 +4,7 @@ signal died(drop_position: Vector2)
 
 @export var speed: float = 80.0
 @export var hp: int = 3
-@export var wall_y: float = 580.0
+@export var wall_y: float = 900.0
 @export var attack_damage: int = 3
 @export var attack_interval: float = 1.0
 

@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://lvlup_overlay01"]
+
+[ext_resource type="Script" path="res://level_up_overlay.gd" id="1_overlay"]
+
+[node name="LevelUpOverlay" type="ColorRect"]
+layout_mode = 0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.7)
+mouse_filter = 0
+process_mode = 2
+visible = false
+script = ExtResource("1_overlay")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+horizontal_alignment = 1
+
+[node name="ChoicesContainer" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8

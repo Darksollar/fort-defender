@@ -3,7 +3,7 @@ extends Node
 @export var radius: float = 55.0
 @export var damage: int = 1
 @export var cooldown: float = 0.18
-@export var wall_y: float = 580.0
+@export var wall_y: float = 900.0
 
 var cooldown_left: float = 0.0
 
@@ -18,8 +18,8 @@ func _process(delta: float) -> void:
 func attack_at_mouse() -> void:
 	var mouse_pos = get_viewport().get_mouse_position()
 
-	# Optional: don't let player click inside the blue fort zone
-	if mouse_pos.y >= wall_y:
+	# Don't let player click inside the fort strip or the right sidebar
+	if mouse_pos.y >= wall_y or mouse_pos.x >= 1560.0:
 		return
 
 	for enemy in get_tree().get_nodes_in_group("enemies"):
